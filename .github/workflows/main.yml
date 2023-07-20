@@ -37,8 +37,16 @@ jobs:
       - name: Terraform Apply - CloudFront
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -target=aws_cloudfront_origin_access_identity.origin_access_identity
-                                 -target=aws_cloudfront_distribution.s3_distribution
-
+                                 -target=aws_cloudfront_distribution.s3_distribution 
+        
+        # Fetch the CloudFront distribution ID from Terraform output
+      - name: Get CloudFront distribution ID
+        id: tf_output
+        run: |
+          distribution_id=$(terraform output -json distribution_id | jq -r '.value')
+          echo "CloudFront distribution ID is $distribution_id"
+          echo "CLOUDFRONT_DISTRIBUTION_ID=$distribution_id" >> $GITHUB_ENV
+                                 
       - name: Terraform Apply - ACM Certificate
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -target=aws_acm_certificate.ssl_certificate
