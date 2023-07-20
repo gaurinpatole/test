@@ -39,8 +39,8 @@ variable "validate_certificate" {
   default     = true
 }
 
-variable "versioning" {
+variable "bucket_versioning" {
   type        = bool
-  description = "Either you want to enable versioning for S3 bucket or not"
-  default     = "False"
+  description = "Either you want to enable versioning for the S3 bucket or not"
+  default     = false
 }
