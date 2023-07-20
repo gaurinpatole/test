@@ -19,7 +19,7 @@ variable "username" {
 variable "aws_region_name" {
   description = "AWS region where all the resources are going to create"
   type        = string
-  default     = ""
+  default     = "us-east-1"
 }
 
 variable "versioning" {
@@ -43,7 +43,7 @@ variable "domain_name" {
 variable "bucket_name" {
   type        = string
   description = "The name of the bucket without the www. prefix(normally domain_name)"
-  default     = ""
+  default     = "gauritest1"
 }
 
 variable "validation_method" {
@@ -54,19 +54,19 @@ variable "validation_method" {
 
 variable "aws_route53_record" {
   type        = string
-  description = "Give validation method to validate the ssl certificate(DNS or EMAIL)"
-  default     = ""
+  description = "Provide Record name."
+  default     = "gauri.dev.devopsinabox.aaic.cc"
 }
 
 
 variable "aws_route53_zone" {
   type        = string
-  default     = ""
+  default     = "dev.devopsinabox.aaic.cc"
 }
 
 variable "website_additional_domains" {
   type        = string
-  default     = ""
+  default     = "gauri.dev.devopsinabox.aaic.cc"
 }
 
 variable "bucket_versioning" {
@@ -83,6 +83,6 @@ variable "validate_certificate" {
 
 variable "sub_domain_name" {
   type        = string
-  description = "The sub domain name for the website"
-  default     = ""
+  description = "The Additional (sub) domain name for the website"
+  default     = "gauri.dev.devopsinabox.aaic.cc"
 }
