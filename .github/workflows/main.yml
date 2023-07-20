@@ -36,7 +36,7 @@ jobs:
         
       - name: Deploy to S3 Bucket
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: aws s3 sync C:/Users/gauri.patole_applied/Desktop/s3Website/test/index.html s3://bucket_name
+        run: aws s3 sync c:/Users/gauri.patole_applied/Desktop/s3Website/test/index.html s3://bucket_name
 
       - name: Terraform Apply - CloudFront
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
