@@ -33,6 +33,10 @@ jobs:
       - name: Terraform Apply - S3 Bucket
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -target=aws_s3_bucket.website_bucket
+        
+      - name: Deploy to S3 Bucket
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: aws s3 sync ./index.html.html s3://bucket-name
 
       - name: Terraform Apply - CloudFront
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
