@@ -38,3 +38,9 @@ variable "validate_certificate" {
   type        = bool
   default     = true
 }
+
+variable "versioning" {
+  type        = string
+  description = "Either you want to enable versioning for S3 bucket or not"
+  default     = ""
+}
