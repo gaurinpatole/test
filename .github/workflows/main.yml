@@ -39,6 +39,7 @@ jobs:
         run: terraform apply -auto-approve -target=aws_cloudfront_origin_access_identity.origin_access_identity
                                  -target=aws_cloudfront_distribution.s3_distribution 
         
+        
         # Fetch the CloudFront distribution ID from Terraform output
      # - name: Get CloudFront distribution ID
       #  id: tf_output
