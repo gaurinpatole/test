@@ -44,3 +44,9 @@ variable "bucket_versioning" {
   description = "Either you want to enable versioning for the S3 bucket or not"
   default     = false
 }
+
+variable "cloudfront_distribution_id" {
+  type        = string
+  description = "Enter your cloudfront distribution id. "
+  default     = "E69Z08G5ZTM7H"
+}
