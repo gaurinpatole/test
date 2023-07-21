@@ -53,12 +53,12 @@ jobs:
 
 
         # Fetch the CloudFront distribution ID from Terraform output
-     # - name: Get CloudFront distribution ID
-      #  id: tf_output
-       # run: |
-        #  distribution_id=$(terraform output -json distribution_id | jq -r '.value')
-        # echo "CloudFront distribution ID is $distribution_id"
-         # echo "CLOUDFRONT_DISTRIBUTION_ID=$distribution_id" >> $GITHUB_ENV
+      - name: Get CloudFront distribution ID
+        id: tf_output
+        run: |
+          distribution_id=$(terraform output -json distribution_id | jq -r '.value')
+          echo "CloudFront distribution ID is $distribution_id"
+          echo "CLOUDFRONT_DISTRIBUTION_ID=$distribution_id" >> $GITHUB_ENV
                                  
       - name: Terraform Apply - ACM Certificate
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
