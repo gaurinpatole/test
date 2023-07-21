@@ -3,6 +3,10 @@
 ## Objective:
 The objective of this project is to create a simple HTML website hosted at https://gauri.dev.aaic.cc. The website should be deployed to an S3 bucket and served through a CloudFront distribution. Additionally, the Route53 domain should be configured to point traffic to the CloudFront Alias.
 
+## Architectural Diagram: 
+
+![Alt text](image.png)
+
 ## Requirements
 
 | Name      | Version |
