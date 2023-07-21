@@ -38,6 +38,7 @@ jobs:
        # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         # run: aws s3 cp gauritest1/index.html s3://gauritest1/
 
+
       - name: Terraform Apply - CloudFront
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -target=aws_cloudfront_origin_access_identity.origin_access_identity
