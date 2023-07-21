@@ -67,3 +67,13 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -target=aws_route53_record.www-a
                                  -target=aws_route53_record.cert_validation
+                                 
+       # Add an approval step before running destruction
+      - name: Manual approval for Terraform Destruction
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: echo "Approve the Terraform destruction by clicking the Approve button on the Actions tab."
+      
+      - name: Terraform Destroy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: terraform destroy -auto-approve
+
