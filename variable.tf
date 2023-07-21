@@ -22,7 +22,6 @@ variable "aws_route53_record" {
   default     = "gauri.dev.devopsinabox.aaic.cc"
 }
 
-
 variable "aws_route53_zone" {
   type        = string
   default     = "dev.devopsinabox.aaic.cc"

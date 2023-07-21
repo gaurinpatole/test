@@ -3,6 +3,34 @@
 ## Objective:
 The objective of this project is to create a simple HTML website hosted at https://gauri.dev.aaic.cc. The website should be deployed to an S3 bucket and served through a CloudFront distribution. Additionally, the Route53 domain should be configured to point traffic to the CloudFront Alias.
 
+## Requirements
+
+| Name      | Version |
+| --------- | ------- |
+| terraform | ~> 3.0  | 
+
+
+## Providers
+
+| Name | Version |
+| ---- | ------- |
+| aws  | ~> 3.0  |
+
+## Inputs
+
+| Name         | Description                                                                                           | Type           | Default | Required |
+| ------------ | ----------------------------------------------------------------------------------------------------- | -------------- | ------- | :------: |
+| aws_region   | Name of AWS region in which you want to create resources                                              | `string`       | ""      |   yes    |
+| bucket_name  | A unique name for your bucket.                                                                        | `string`       | ""      |   yes    |
+| domain_name  | The name of the website.                                                                              | `string`       | ""      |   yes    |
+| aws_route53_zone   | Name of existing/new route53 zone where records will be created.                                | `string`       | ""      |   yes    |
+| aws_route53_record | Name for the records that will be created in the hosted zone.                                   | `string`       | ""      |   yes    |
+| cloudfront_distribution_id | Provide the cloudfront distribution id.                                                 | `string`       | ""      |   yes    |
+| validate_certificate  | Amazon certificate manager validation                                                        | `bool`         | "True"  |   yes    |
+| bucket_versioning  | Enable if bucket versioning is required.                                                        | `bool`         | "False" |   yes    |
+| website_additional_domains | An alternate name for the website.                                                      | `string`       | ""      |   yes    |
+
+
 ## Steps to Create Terraform Code for Infrastructure Automation:
 - Terraform Installation (Skip if already done):
 - Terraform is an infrastructure-as-code tool used to define and provision infrastructure resources. Ensure Terraform is installed on your local machine or the GitHub Actions runner.
@@ -69,4 +97,4 @@ Configuration Secrets:
 
 - Save the keys as secrets in the GitHub repository with the names AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN.
 - Commit and push the changes to the main branch of the repository. The GitHub Actions workflow will be triggered, and the website will be deployed to the specified S3 bucket, served through CloudFront, and the Route53 domain will be configured accordingly.
-- Access the website at https://gauri.dev.devopsinabox.aaic.cc once the deployment is successful.
+- Access the website at the provided domain name. The website https://gauri.dev.devopsinabox.aaic.cc once the deployment is successful.

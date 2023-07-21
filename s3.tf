@@ -10,10 +10,10 @@ resource "aws_s3_bucket_ownership_controls" "owner" {
   }
 }
  # resource "aws_s3_bucket_acl" "s3_acl" {
-  
  #   bucket = aws_s3_bucket.website_bucket.id
  #   acl    = "public-read"
  #}
+ 
 resource "aws_s3_bucket_versioning" "website_files" {
   count  = var.bucket_versioning ? 1 : 0
   bucket = "${aws_s3_bucket.website_bucket.id}"
