@@ -59,7 +59,3 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     response_page_path    = "/error.html"
   }
 }
-
-output "ssl_certificate_cred" {
-  value = aws_fsx_windows_file_system.windows_file_system.dns_name
-}
