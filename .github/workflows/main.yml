@@ -34,9 +34,9 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -target=aws_s3_bucket.website_bucket
         
-     # - name: Deploy to S3 Bucket
-      #  if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-       # run: aws s3 sync test/blob/main/index.html s3://bucket_name
+      - name: Deploy to S3 Bucket
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: aws s3 cp gauritest1/index.html s3://gauritest1/
 
       - name: Terraform Apply - CloudFront
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -44,11 +44,12 @@ jobs:
                                  -target=aws_cloudfront_distribution.s3_distribution 
         
            
-     # - name: Invalidate CloudFront Cache
-      #  if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-       # run: |
-        # cloudfront_distribution_id="YOUR_CLOUDFRONT_DISTRIBUTION_ID"
-         # aws cloudfront create-invalidation --distribution-id "$cloudfront_distribution_id" --paths "/*"
+      - name: Invalidate CloudFront Cache
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+         cloudfront_distribution_id=$(cat path/to/your/variable_file.yml | yq -r .CLOUDFRONT_DISTRIBUTION_ID)
+         aws cloudfront create-invalidation --distribution-id "$cloudfront_distribution_id" --paths "/*"
+
 
         # Fetch the CloudFront distribution ID from Terraform output
      # - name: Get CloudFront distribution ID
