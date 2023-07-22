@@ -12,20 +12,18 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   price_class         = "PriceClass_All"
   default_root_object = "index.html"
 
-output "cloudfront_distribution_domain_name" {
-  description = "The domain name of the CloudFront distribution."
-  value       = aws_cloudfront_distribution.s3_distribution.domain_name
-}
-
-
-
-  origin {
+origin {
     domain_name = aws_s3_bucket.website_bucket.bucket_regional_domain_name
     origin_id   = "origin-bucket-${aws_s3_bucket.website_bucket.id}"
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
     }
   }
+
+output "cloudfront_distribution_domain_name" {
+  description = "The domain name of the CloudFront distribution."
+  value       = aws_cloudfront_distribution.s3_distribution.domain_name
+}
 
   default_cache_behavior {
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
