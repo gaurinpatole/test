@@ -11,12 +11,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   is_ipv6_enabled     = true
   price_class         = "PriceClass_All"
   default_root_object = "index.html"
-
-output "cloudfront_distribution_domain_name" {
-  description = "The domain name of the CloudFront distribution."
-  value       = aws_cloudfront_distribution.s3_distribution.domain_name
-}
-
   
   origin {
     domain_name = aws_s3_bucket.website_bucket.bucket_regional_domain_name
@@ -65,3 +59,9 @@ output "cloudfront_distribution_domain_name" {
     response_page_path    = "/error.html"
   }
 }
+
+output "cloudfront_distribution_domain_name" {
+  description = "The domain name of the CloudFront distribution."
+  value       = aws_cloudfront_distribution.s3_distribution.domain_name
+}
+
