@@ -4,11 +4,6 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "access-identity-${var.bucket_name}.s3.amazonaws.com"
 }
 
-output "cloudfront_distribution_domain_name" {
-  description = "The domain name of the CloudFront distribution."
-  value       = aws_cloudfront_distribution.s3_distribution.domain_name
-}
-
 resource "aws_cloudfront_distribution" "s3_distribution" {
   depends_on          = [aws_s3_bucket.website_bucket, aws_acm_certificate.ssl_certificate]
   aliases             = [var.website_additional_domains]
@@ -16,7 +11,14 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   is_ipv6_enabled     = true
   price_class         = "PriceClass_All"
   default_root_object = "index.html"
-  
+
+output "cloudfront_distribution_domain_name" {
+  description = "The domain name of the CloudFront distribution."
+  value       = aws_cloudfront_distribution.s3_distribution.domain_name
+}
+
+
+
   origin {
     domain_name = aws_s3_bucket.website_bucket.bucket_regional_domain_name
     origin_id   = "origin-bucket-${aws_s3_bucket.website_bucket.id}"
