@@ -62,8 +62,8 @@ jobs:
                                  
       - name: Terraform Apply - ACM Certificate
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve -target=aws_acm_certificate.ssl_certificate
-
+        run: terraform apply -auto-approve -target=aws_acm_certificate.ssl_certificate -debug
+        
       - name: Terraform Apply - Route 53
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -target=aws_route53_record.www-a
