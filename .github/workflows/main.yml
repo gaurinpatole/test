@@ -38,6 +38,10 @@ jobs:
        # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         # run: aws s3 cp gauritest1/index.html s3://gauritest1/
 
+      - name: Terraform Apply - ACM Certificate
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve -target=aws_acm_certificate.ssl_certificate -debug
+    
 
       - name: Terraform Apply - CloudFront
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -59,11 +63,7 @@ jobs:
           distribution_id=$(terraform output -json distribution_id | jq -r '.value')
           echo "CloudFront distribution ID is $distribution_id"
           echo "CLOUDFRONT_DISTRIBUTION_ID=$distribution_id" >> $GITHUB_ENV
-                                 
-      - name: Terraform Apply - ACM Certificate
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve -target=aws_acm_certificate.ssl_certificate -debug
-        
+                                     
       - name: Terraform Apply - Route 53
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve -target=aws_route53_record.www-a
