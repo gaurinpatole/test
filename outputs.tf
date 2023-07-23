@@ -1,4 +1,4 @@
-output "www_cloudfront_domain_name" {
+output "cloudfront_distribution_domain_name" {
   description = "Domain name of the cloudfront distribution having origin as S3 bucket with www prefix"
   value       = aws_cloudfront_distribution.s3_distribution.domain_name
 }
