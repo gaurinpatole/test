@@ -47,5 +47,5 @@ variable "bucket_versioning" {
 variable "cloudfront_distribution_id" {
   type        = string
   description = "Enter your cloudfront distribution id. "
-  default     = ""
+  default     = "E2R5WIDFEPOGUB"
 }
