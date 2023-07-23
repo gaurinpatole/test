@@ -5,7 +5,7 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
-  depends_on          = [aws_s3_bucket.website_bucket, aws_acm_certificate.ssl_certificate]
+  depends_on          = [aws_s3_bucket.website_bucket,aws_acm_certificate.ssl_certificate]
   aliases             = [var.website_additional_domains]
   enabled             = true
   is_ipv6_enabled     = true
