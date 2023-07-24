@@ -24,7 +24,7 @@ The objective of this project is to create a simple HTML website hosted at https
 
 | Name         | Description                                                                                           | Type           | Default | Required |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------------- | ------- | :------: |
-| aws_region   | Name of AWS region in which you want to create resources                                              | `string`       | ""      |   yes    |
+| aws_region   | Name of AWS region in which you want to create the resource.                                          | `string`       | ""      |   yes    |
 | bucket_name  | A unique name for your bucket.                                                                        | `string`       | ""      |   yes    |
 | domain_name  | The name of the website.                                                                              | `string`       | ""      |   yes    |
 | aws_route53_zone   | Name of existing/new route53 zone where records will be created.                                | `string`       | ""      |   yes    |
