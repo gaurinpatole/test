@@ -4,13 +4,13 @@ data "aws_route53_zone" "hosted_zone" {
   name = var.aws_route53_zone
 }
 
-# resource "aws_route53_record" "root-a" {
-#   zone_id = data.aws_route53_zone.hosted_zone.zone_id
-#   name    = var.domain_name
-#   type    = "A"
-#   ttl     = "300"
+resource "aws_route53_record" "root-a" {
+   zone_id = data.aws_route53_zone.hosted_zone.zone_id
+   name    = var.domain_name
+   type    = "A"
+   ttl     = "300"
 #   records = ["10.0.0.1"]
-# }
+ }
 
 resource "aws_route53_record" "www-a" {
   zone_id = data.aws_route53_zone.hosted_zone.zone_id
