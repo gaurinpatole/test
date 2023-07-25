@@ -5,7 +5,7 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
-  depends_on          = [aws_s3_bucket.website_bucket, aws_acm_certificate.ssl_certificate]
+  depends_on          = [aws_s3_bucket.website_bucket, aws_acm_certificate.acm_certificate]
   aliases             = [var.website_additional_domains]
   enabled             = true
   is_ipv6_enabled     = true
@@ -44,11 +44,12 @@ origin {
   }
 
   tags = {
-    Environment = "production"
+    Environment = "dev"
   }
 
+ # SSL Certificate for HTTPS support
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate.ssl_certificate.arn
+    acm_certificate_arn = aws_acm_certificate.acm_certificate.arn
     ssl_support_method  = "sni-only"
   }
 
