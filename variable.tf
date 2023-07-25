@@ -13,7 +13,7 @@ variable "domain_name" {
 variable "bucket_name" {
   type        = string
   description = "The name of the bucket without the www. prefix(normally domain_name)"
-  default     = "gauritest1"
+  default     = "gauribucket"
 }
 
 variable "aws_route53_record" {
@@ -47,5 +47,5 @@ variable "bucket_versioning" {
 variable "cloudfront_distribution_id" {
   type        = string
   description = "Enter your cloudfront distribution id. "
-  default     = "E2R5WIDFEPOGUB"
+  default     = ""
 }

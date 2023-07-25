@@ -9,13 +9,13 @@ output "root_cloudfront_domain_name" {
 }
 
 
-output "ssl_certificate_status" {
-  description = "Status of the ssl certificate"
-  value       = aws_acm_certificate.ssl_certificate.status
+output "acm_certificate_status" {
+  description = "Status of the acm certificate"
+  value       = aws_acm_certificate.acm_certificate.status
 }
 
-output "ssl_certificate_arn" {
-  description = "ARN of the ssl certificate"
-  value       = aws_acm_certificate.ssl_certificate.arn
+output "acm_certificate_arn" {
+  description = "ARN of the acm certificate"
+  value       = aws_acm_certificate.acm_certificate.arn
 }
 
