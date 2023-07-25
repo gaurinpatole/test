@@ -30,8 +30,8 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Init
-        run: terraform init
+      - name: Terraform plan
+        run: terraform plan
 
       - name: Terraform Apply - S3 Bucket
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
