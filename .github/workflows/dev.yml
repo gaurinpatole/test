@@ -49,7 +49,7 @@ jobs:
            
       - name: Invalidate CloudFront Cache
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
-         run: |
+        run: |
           cloudfront_distribution_id=$(cat path/to/your/variable_file.yml | yq -r .CLOUDFRONT_DISTRIBUTION_ID)
           aws cloudfront create-invalidation --distribution-id "$cloudfront_distribution_id" --paths "/*"
 
