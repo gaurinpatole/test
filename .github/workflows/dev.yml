@@ -30,6 +30,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Terraform Init
+        run: terraform init
+
       - name: Terraform Apply - S3 Bucket
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
         run: terraform apply -auto-approve -target=aws_s3_bucket.website_bucket
