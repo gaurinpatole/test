@@ -92,8 +92,8 @@ Configuration Secrets:
 - Deploy the S3 bucket for the website (terraform apply -auto-approve -target=aws_s3_bucket.website_bucket).
 - Deploy the CloudFront distribution (terraform apply -auto-approve -target=aws_cloudfront_origin_access_identity.  origin_access_identity   -target=aws_cloudfront_distribution.s3_distribution).
 - Fetch the CloudFront distribution ID and set it as an environment variable.
-- Deploy the ACM certificate (terraform apply -auto-approve -target=aws_acm_certificate.ssl_certificate).
-- Deploy the Route53 configurations (terraform apply -auto-approve -target=aws_route53_record.www-a -target=aws_route53_record.cert_validation).
+- Deploy the ACM certificate (terraform apply -auto-approve -target=aws_acm_certificate.acm_certificate).
+- Deploy the Route53 configurations (terraform apply -auto-approve -target=aws_route53_record.www-a -target=aws_route53_record.certificate_validation).
 - Configuration Steps:
 - Create a new private GitHub repository.
 
